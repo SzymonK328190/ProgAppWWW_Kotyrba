@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" name="viewport" width="device-width" initial-scale="1">
     <link href="css/style.css" rel="stylesheet">
+    <title>Sklep z artykułami artystycznymi - Kontakt</title>
 </head>
 <body>
 <header>
@@ -16,6 +17,53 @@
     </nav>
 </header>
 <main>
+    <section>
+        <h2>Formularz kontaktowy</h2>
+        <p>
+            Formularz demonstracyjny. Dane pojawią się w adresie strony; zapytanie nie zostanie zapisane ani wysłane e-mailem.
+        </p>
+        <form method="get" action="kontakt.html">
+            <div>
+                <label for="form-email">Adres e-mail (Pole obowiązkowe)</label>
+                <input
+                    type="email"
+                    id="form-email"
+                    name="email"
+                    required
+                    autocomplete="email">
+            </div>
+            <div>
+                <label for="form-product">Produkt którego dotyczy pytanie (Pole obowiązkowe)</label>
+                <select id="form-product" name="produkt" required>
+                    <option value="">Wybierz produkt</option>
+                    <option value="farby-olejne">Farby olejne</option>
+                    <option value="szkicownik">Szkicownik</option>
+                    <option value="zestaw-olowkow">Zestaw Ołówków</option>
+                </select>
+            </div>
+            <div>
+                <label for="form-quantity">Liczba sztuk (Od 1 do 5 sztuk) (Pole obowiązkowe)</label>
+                <input
+                    type="number"
+                    name="ilosc"
+                    id="form-quantity"
+                    required
+                    min="1"
+                    max="5"
+                    step="1">
+            </div>
+            <div>
+                <label for="form-message">Wiadomość (Od 10 do 500 znaków) (Pole obowiązkowe)</label>
+                <textarea
+                    name="wiadomosc"
+                    required
+                    minlength="10"
+                    maxlength="500">
+                </textarea>
+            </div>
+            <button type="submit">Sprawdź zapytanie</button>
+        </form>
+    </section>
 </main>
 <footer></footer>
 </body>
