@@ -7,6 +7,8 @@ Wymagania
 
 Z katalogu lab1 uruchomić komende
 `python -m http.server 8000`
+w przeglądarce otworzyć
+`localhost:8000`
 
 ## Źródła grafik
 
