@@ -62,16 +62,16 @@
                     id="form-message"
                     required
                     maxlength="500"></textarea>
-                    <p id="form-message-error" hidden>Error</p>
+                    <p id="form-message-error" hidden>Błąd: wiadomość powinna mieć od 10 do 500 znaków!</p>
             </div>
             <div id="price-info">
                 Cena
             </div>
             <button id="submit-button" type="submit">Sprawdź zapytanie</button>
         </form>
-        <summary>
+        <summary id="summary">
             <p>Podgląd lokalny. Formularz nie wysyła wiadomości</p>
-            <p id="summary-content" hidden></p>
+            <div id="summary-content"></div>
         </summary>
     </section>
 </main>

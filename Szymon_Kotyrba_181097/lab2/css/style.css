@@ -6,6 +6,7 @@
     --reverse-text-colour: #FFFFFF;
     --form-colour: #ffffff;
     --button-colour: #5353ff;
+    --error-colour: #ff0000;
 }
 
 [data-theme="dark"] {
@@ -16,6 +17,7 @@
     --reverse-text-colour: #000000;
     --form-colour: #232323;
     --button-colour: #c8c8ff;
+    --error-colour: #ff0000;
 }
 
 * {
@@ -112,6 +114,10 @@ textarea:focus-visible {
 
 #theme-button-style {
     margin-left: auto;
+}
+
+#form-message-error {
+    color: var(--error-colour);
 }
 
 @media (min-width: 768px) {

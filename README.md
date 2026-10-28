@@ -4,6 +4,7 @@
 
 Wymagania
 - python
+- przeglądarka
 
 Z katalogu lab1 uruchomić komende
 `python -m http.server 8000`
