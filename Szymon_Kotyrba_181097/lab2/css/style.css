@@ -3,7 +3,9 @@
     --border-colour: #505050;
     --fill-colour: #DDDDDD;
     --text-colour: #000000;
+    --reverse-text-colour: #FFFFFF;
     --form-colour: #ffffff;
+    --button-colour: #5353ff;
 }
 
 [data-theme="dark"] {
@@ -11,11 +13,29 @@
     --border-colour: #404040;
     --fill-colour: #232323;
     --text-colour: #FFFFFF;
+    --reverse-text-colour: #000000;
     --form-colour: #232323;
+    --button-colour: #c8c8ff;
 }
 
 * {
     box-sizing: border-box;
+}
+
+button {
+    border-style: none;
+    background-color: var(--button-colour);
+    color: var(--reverse-text-colour);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+form button {
+    margin: 10px 0;
+}
+
+ul {
+    padding: 0;
 }
 
 body {
@@ -58,13 +78,19 @@ textarea {
     min-width: 100%;
     background-color: var(--form-colour);
     color: var(--text-colour);
+    margin: 5px 0;
 }
 
 a {
     color: var(--text-colour);
 }
 
-nav ul{
+#catalog-products-info {
+    list-style: none;
+    padding: 0;
+}
+
+header ul{
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
