@@ -25,7 +25,7 @@
         <p>
             Formularz demonstracyjny. Dane pojawią się w adresie strony; zapytanie nie zostanie zapisane ani wysłane e-mailem.
         </p>
-        <form method="get" action="kontakt.html">
+        <form method="get" action="kontakt.html" id="contact-form">
             <div>
                 <label for="form-email">Adres e-mail (Pole obowiązkowe)</label>
                 <input
@@ -39,9 +39,9 @@
                 <label for="form-product">Produkt którego dotyczy pytanie (Pole obowiązkowe)</label>
                 <select id="form-product" name="produkt" required>
                     <option value="">Wybierz produkt</option>
-                    <option value="farby-olejne">Farby olejne</option>
-                    <option value="szkicownik">Szkicownik</option>
-                    <option value="zestaw-olowkow">Zestaw Ołówków</option>
+                    <option value="1">Farby olejne</option>
+                    <option value="2">Szkicownik</option>
+                    <option value="3">Zestaw Ołówków</option>
                 </select>
             </div>
             <div>
@@ -61,11 +61,18 @@
                     name="wiadomosc"
                     id="form-message"
                     required
-                    minlength="10"
                     maxlength="500"></textarea>
+                    <p id="form-message-error" hidden>Error</p>
             </div>
-            <button type="submit">Sprawdź zapytanie</button>
+            <div id="price-info">
+                Cena
+            </div>
+            <button id="submit-button" type="submit">Sprawdź zapytanie</button>
         </form>
+        <summary>
+            <p>Podgląd lokalny. Formularz nie wysyła wiadomości</p>
+            <p id="summary-content" hidden></p>
+        </summary>
     </section>
 </main>
 <footer></footer>

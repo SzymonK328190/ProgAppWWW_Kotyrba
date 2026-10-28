@@ -14,6 +14,18 @@ let product_count = 0;
 const catalog_counter = document.getElementById("catalog-counter");
 const catalog_no_products_info = document.getElementById("catalog-no-products-info");
 
+const form_email = document.getElementById("form-email");
+const form_product = document.getElementById("form-product");
+const form_quantity = document.getElementById("form-quantity");
+const form_message = document.getElementById("form-message");
+
+const form_message_error = document.getElementById("form-message-error");
+
+const price_info = document.getElementById("price-info");
+
+const contact_form = document.getElementById("contact-form");
+const submit_button = document.getElementById("submit-button");
+
 const catalog_products = [
     {
         id: 1,
@@ -62,6 +74,7 @@ function updateClock() {
         hour: "numeric",
         minute: "numeric",
         second: "numeric",
+        hourCycle: "h23"
     };
     const date_options = {
         year: "numeric",
@@ -70,7 +83,7 @@ function updateClock() {
     };
     const time = new Intl.DateTimeFormat('pl-PL', hour_options).format(now);
     const date = new Intl.DateTimeFormat('pl-PL', date_options).format(now);
-    clock.innerHTML = date + " " + time;
+    clock.textContent = `${date} ${time}`;
 }
 
 function startClock() {
@@ -100,8 +113,45 @@ function searchCatalog() {
             product_count++;
         }
     });
-    catalog_counter.innerHTML = "Liczba produktów: " + product_count;
+    catalog_counter.textContent = `Liczba produktów: ${product_count}`;
     catalog_no_products_info.hidden = product_count > 0;
+}
+
+function calculatePrice(cena, ilosc) {
+    return cena * ilosc;
+}
+
+function priceFormatPLN(cenaGrosze) {
+    const opcje = {
+        style: "currency",
+        currency: "PLN"
+    }
+    return new Intl.NumberFormat("pl-PL", opcje).format(cenaGrosze / 100);
+}
+
+function updatePrice() {
+    if(price_info == null) return;
+
+    const product_id = Number(form_product.value);
+    const quantity = Number(form_quantity.value.trim());
+    const is_quantity_valid = form_quantity.value.trim() != "" && Number.isInteger(quantity) && quantity >= 1 && quantity <= 5;
+    const selected_product = catalog_products.find(p => p.id === product_id);
+    if(product_id === "" || !is_quantity_valid || !selected_product) {
+        price_info.textContent = "Wybierz produkt i poprawną ilość sztuk (od 1 do 5)";
+        return;
+    }
+    const price_in_grosze = calculatePrice(selected_product.cenaGrosze, quantity);
+    price_info.textContent = `Cena: ${priceFormatPLN(price_in_grosze)}`
+}
+
+function formSubmit(event) {
+    event.preventDefault();
+
+    const message_text = form_message.value.trim();
+    if(message_text.length < 10) {
+        form_message_error.hidden = false;
+        form_message.focus();
+    }
 }
 
 theme_toggle.addEventListener('click', toggleTheme);
@@ -109,6 +159,12 @@ if(start_button != null) start_button.addEventListener('click', startClock);
 if(stop_button != null) stop_button.addEventListener('click', stopClock);
 if(catalog_search != null) catalog_search.addEventListener('input', searchCatalog);
 
+if (form_product != null) form_product.addEventListener('change', updatePrice);
+if (form_quantity != null) form_quantity.addEventListener('input', updatePrice);
+
+if(contact_form != null) contact_form.addEventListener('submit', formSubmit);
+
+updatePrice();
 searchCatalog("");
 startClock();
 loadTheme();
