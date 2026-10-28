@@ -1,0 +1,95 @@
+:root , [data-theme="light"] {
+    --background-colour: #ffffff;
+    --border-colour: #505050;
+    --fill-colour: #DDDDDD;
+    --text-colour: #000000;
+    --form-colour: #ffffff;
+}
+
+[data-theme="dark"] {
+    --background-colour: #111;
+    --border-colour: #404040;
+    --fill-colour: #232323;
+    --text-colour: #FFFFFF;
+    --form-colour: #232323;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 0 16px;
+    color: var(--text-colour);
+    background-color: var(--background-colour);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.catalog-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+}
+
+.catalog-product {
+    background-color: var(--fill-colour);
+    border: 2px solid var(--border-colour);
+    padding: 12px;
+}
+
+.catalog-product img {
+    width: 100%;
+    height: 250px;
+    object-fit: scale-down;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    background-color: var(--form-colour);
+    color: var(--text-colour);
+}
+
+a {
+    color: var(--text-colour);
+}
+
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+}
+
+a:hover,
+button:hover {
+    opacity: 0.7;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--border-colour);
+}
+
+#theme-button-style {
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .catalog-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
