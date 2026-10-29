@@ -215,6 +215,9 @@ if(contact_form != null) contact_form.addEventListener('submit', formSubmit);
 if(form_message != null) form_message.addEventListener('input', validateMessageLength);
 
 if (form_message != null) form_message.addEventListener('input', clearSummary);
+if (form_email != null) form_email.addEventListener('input', clearSummary);
+if (form_product != null) form_product.addEventListener('input', clearSummary);
+if (form_quantity != null) form_quantity.addEventListener('input', clearSummary);
 
 updatePrice();
 searchCatalog("");
