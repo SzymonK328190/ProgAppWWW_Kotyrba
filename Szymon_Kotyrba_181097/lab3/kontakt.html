@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/main.js" defer></script>
+    <script src="vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/lab3.js" defer></script>
+    <title>Sklep z artykułami artystycznymi - Kontakt</title>
+</head>
+<body>
+<header>
+    <h1>Kontakt</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Główna</a></li>
+            <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+            <li><a href="produkt.html">Produkt</a></li>
+            <li id="theme-button-style"><button id="theme-button">Tryb ciemny</button></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>Formularz kontaktowy</h2>
+        <p>
+            Formularz demonstracyjny. Dane pojawią się w adresie strony; zapytanie nie zostanie zapisane ani wysłane e-mailem.
+        </p>
+        <form method="get" action="kontakt.html" id="contact-form">
+            <div>
+                <label for="form-email">Adres e-mail (Pole obowiązkowe)</label>
+                <input
+                    type="email"
+                    id="form-email"
+                    name="email"
+                    required
+                    autocomplete="email">
+            </div>
+            <div>
+                <label for="form-product">Produkt którego dotyczy pytanie (Pole obowiązkowe)</label>
+                <select id="form-product" name="produkt" required>
+                    <option value="">Wybierz produkt</option>
+                    <option value="1">Farby olejne</option>
+                    <option value="2">Szkicownik</option>
+                    <option value="3">Zestaw Ołówków</option>
+                </select>
+            </div>
+            <div>
+                <label for="form-quantity">Liczba sztuk (Od 1 do 5 sztuk) (Pole obowiązkowe)</label>
+                <input
+                    type="number"
+                    name="ilosc"
+                    id="form-quantity"
+                    required
+                    min="1"
+                    max="5"
+                    step="1">
+            </div>
+            <div>
+                <label for="form-message">Wiadomość (Od 10 do 500 znaków) (Pole obowiązkowe)</label>
+                <textarea
+                    name="wiadomosc"
+                    id="form-message"
+                    required
+                    minlength="10"
+                    maxlength="500"></textarea>
+                    <p id="form-message-error" hidden>Błąd: wiadomość powinna mieć od 10 do 500 znaków!</p>
+            </div>
+            <div id="price-info">
+                Cena
+            </div>
+            <button id="submit-button" type="submit">Sprawdź zapytanie</button>
+        </form>
+        <summary id="summary">
+            <p>Podgląd lokalny. Formularz nie wysyła wiadomości</p>
+            <div id="summary-content"></div>
+        </summary>
+    </section>
+</main>
+<footer></footer>
+</body>
+</html>

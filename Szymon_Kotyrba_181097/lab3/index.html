@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/main.js" defer></script>
+    <script src="vendor/jquery-4.0.0.min.js" defer></script>
+    <script src="js/lab3.js" defer></script>
+    <title>Sklep z artykułami artystycznymi - Strona główna</title>
+</head>
+<body>
+<header>
+    <h1>Strona główna</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html" aria-current="page">Główna</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="produkt.html">Produkt</a></li>
+            <li id="theme-button-style"><button id="theme-button" aria-pressed="true">Tryb ciemny</button></li>
+        </ul>
+    </nav>
+    <div id="time-date">
+        Godzina: Data:
+    </div>
+    <ul>
+        <li><button id="start-button">Start zegar</button></li>
+        <li><button id="stop-button">Stop zegar</button></li>
+    </ul>
+</header>
+<main>
+    <section>
+        <button type="button" class="animated-button" id="button-1">Animacja 1</button>
+        <button type="button" class="animated-button" id="button-2">Animacja 2</button>
+        <button type="button" class="animated-button" id="button-3">Animacja 3</button>
+    </section>
+    <section>
+        <h2>Katalog produktów</h2>
+        <input type="search" id="catalog-search" placeholder="Wyszukaj produkt po nazwie">
+        <ul aria-live="polite" id="catalog-products-info">
+            <li id="catalog-counter">Liczba produktów: 10</li>
+            <li id="catalog-no-products-info" hidden>Brak produktów o danej nazwie!</li>
+        </ul>    
+        <div class="catalog-grid">
+            <article class="catalog-product">
+                <a href="produkt.html">
+                    <h2>Zestaw farb olejnych</h2>
+                    <img src="img/farby_olejne.webp" width="400" height="400" alt="Zestaw 12 farb olejnych w drewnianym pudełku">
+                    <p>Zestaw 12 farb olejnych</p>
+                    <p>Cena: 441,90 zł</p>
+                </a>
+            </article>
+
+            <article class="catalog-product">
+                <a>
+                    <h2>Szkicownik</h2>
+                    <img src="img/szkicownik.webp" width="353" height="512" alt="Szkicownik artystyczny A4 w twardej oprawie">
+                    <p>Szkicownik A4 50 kartkowy
+                    <p>Cena: 44,90 zł</p>
+                </a>
+            </article>
+
+            <article class="catalog-product">
+                <a>
+                    <h2>Zestaw Ołówków</h2>
+                    <img src="img/zestaw_olowkow.webp" width="400" height="400" alt="Zestaw ołówków do szkicowania o różnej twardości">
+                    <p>Podstawowy zestaw ołówków do szkicowania</p>
+                    <p>Cena: 27,90 zł</p>
+                </a>
+            </article>
+        </div>
+    </section>
+</main>
+<footer>Sklep artystyczny</footer>
+</body>
+</html>
