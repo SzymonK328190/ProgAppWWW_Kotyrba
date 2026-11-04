@@ -60,8 +60,13 @@ $('#button-2').on("mouseleave", function() {
 });
 
 let button3_steps = 0;
+const counter = document.querySelector('#button-3-counter')
 $('#button-3').on("click", function() {
+    if($(this).is(":animated") || button3_steps >= 5) return;
+    button3_steps += 1;
+    counter.textContent = `${button3_steps}`
     $(this).animate({
-
+        width: `${160 + 20*button3_steps}`,
+        height: `${80 + 10*button3_steps}`
     }, 300, function() {});
 });
