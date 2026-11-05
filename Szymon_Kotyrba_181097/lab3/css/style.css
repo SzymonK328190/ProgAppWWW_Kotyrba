@@ -7,6 +7,7 @@
     --form-colour: #ffffff;
     --button-colour: #5353ff;
     --error-colour: #ff0000;
+    --danger-colour: #ad0000;
 }
 
 [data-theme="dark"] {
@@ -18,6 +19,7 @@
     --form-colour: #232323;
     --button-colour: #c8c8ff;
     --error-colour: #ff0000;
+    --danger-colour: #ff5b5b;
 }
 
 * {
@@ -124,7 +126,11 @@ textarea:focus-visible {
 }
 
 #form-message-error {
-    color: var(--error-colour);
+    color: var(--danger-colour);
+}
+
+#reset-button {
+    background-color: var(--danger-colour);
 }
 
 @media (min-width: 768px) {

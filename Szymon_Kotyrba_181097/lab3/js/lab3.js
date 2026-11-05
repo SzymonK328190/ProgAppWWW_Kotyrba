@@ -1,5 +1,9 @@
 let animation1_bigger = false;
 document.getElementById("button-1").setAttribute("aria-pressed", animation1_bigger);
+const matchMediaVar = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+$.fx.off = matchMediaVar.matches;
+console.log(matchMediaVar.matches)
 
 $('#button-1').on("click", function() {
     $(this).stop(true, false);
@@ -70,3 +74,20 @@ $('#button-3').on("click", function() {
         height: `${80 + 10*button3_steps}`
     }, 300, function() {});
 });
+
+$('#reset-button').on("click", function() {
+    $('#button-1').stop();
+    $('#button-1').css({
+            width: "160",
+            height: "80"
+    });
+    $('#button-3').stop();
+    $('#button-3').css({
+        width: "160",
+        height: "80"
+    })
+    counter.textContent = "0";
+    animation1_bigger = false;
+    button3_steps = 0;
+    document.getElementById("button-1").setAttribute("aria-pressed", animation1_bigger);
+})
