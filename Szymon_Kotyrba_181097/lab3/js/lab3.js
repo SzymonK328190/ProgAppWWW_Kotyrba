@@ -3,7 +3,6 @@ document.getElementById("button-1").setAttribute("aria-pressed", animation1_bigg
 const matchMediaVar = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 $.fx.off = matchMediaVar.matches;
-console.log(matchMediaVar.matches)
 
 $('#button-1').on("click", function() {
     $(this).stop(true, false);
@@ -90,4 +89,22 @@ $('#reset-button').on("click", function() {
     animation1_bigger = false;
     button3_steps = 0;
     document.getElementById("button-1").setAttribute("aria-pressed", animation1_bigger);
+})
+
+const serverStatus = $("#server-status");
+const buttonCheckServer = $("#button-check-server");
+$('#button-check-server').on("click", function(e) {
+    e.preventDefault();
+    buttonCheckServer.prop('disabled', true);
+    serverStatus.text("Oczekiwanie na odpowiedź z serwera...");
+    $.ajax({url: 'status.php', method: 'GET', dataType: 'text', timeout: 5000})
+    .done(function (data) {
+        serverStatus.text(data)
+    })
+    .fail(function() {
+        serverStatus.text("Nie otrzymano odpowiedzi z serwera");
+    })
+    .always(function() {
+        buttonCheckServer.prop('disabled', false);
+    })
 })
