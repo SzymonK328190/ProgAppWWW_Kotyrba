@@ -58,6 +58,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if($bladPost == true) {
         http_response_code(400);
+    } else {
+        $_SESSION['ostatni_wybor'] = [
+            'id' => $idAktualnegoProduktuPost,
+            'ilosc' => $wybranaIloscPost
+        ];
+        header('Location: lab4.php', true, 303);
+        exit;
     }
 }
 
@@ -136,6 +143,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         ?>
         </div>
+        <?php if(isset($_SESSION['ostatni_wybor'])): ?>
+            <div class="box">
+                <h4>Wybrany produkt</h4>
+                <p>Nazwa: <?php echo htmlspecialchars($produkty[$_SESSION['ostatni_wybor']['id']]['nazwa'], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>Ilość: <?php echo htmlspecialchars($_SESSION['ostatni_wybor']['ilosc'], ENT_QUOTES, 'UTF-8'); ?></p>
+            </div>
+        <?php endif; ?>
         <div class="box">
             <form method="post" action='lab4.php'>
                 <label for="wybor-produktu">Produkt:</label>
