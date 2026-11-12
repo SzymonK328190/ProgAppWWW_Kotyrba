@@ -2,28 +2,28 @@
 
 $produkty = [
     [
-        'id' => 1,
+        'id' => 0,
         'nazwa' => 'Metro 2033',
         'kategoria' => 'ksiazki',
         'stan' => 0
     ],
     [
-        'id' => 2,
+        'id' => 1,
         'nazwa' => 'Wojna niepamięci',
         'kategoria' => 'ksiazki',
-        'stan' => 2
+        'stan' => 1
     ],
     [
-        'id' => 3,
+        'id' => 2,
         'nazwa' => 'Myszka',
-        'kategoria' => 'ksiazki',
+        'kategoria' => 'akcesoria',
         'stan' => 4
     ],
     [
-        'id' => 4,
+        'id' => 3,
         'nazwa' => 'Klawiatura',
         'kategoria' => 'akcesoria',
         'stan' => 7
     ]
-]
+];
 ?>
