@@ -20,7 +20,7 @@ $produkty = [
         'stan' => 4
     ],
     [
-        'id' => 3,
+        'id' => 7,
         'nazwa' => 'Klawiatura',
         'kategoria' => 'akcesoria',
         'stan' => 7

@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         http_response_code(400);
     } else {
         $_SESSION['ostatni_wybor'] = [
-            'id' => $idAktualnegoProduktuPost,
+            'id' => $faktycznyWybranyProduktPost['id'],
             'ilosc' => $wybranaIloscPost
         ];
         header('Location: lab4.php', true, 303);
@@ -145,9 +145,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <?php if(isset($_SESSION['ostatni_wybor'])): ?>
             <div class="box">
+                <?php 
+                    for($i = 0; $i < $iloscProduktow; $i++) {
+                        if($produkty[$i]['id'] == $_SESSION['ostatni_wybor']['id']) {
+                            $indeksOstatniegoProduktu = $i;
+                            break;
+                        }
+                    }
+                ?>
                 <h4>Wybrany produkt</h4>
-                <p>Nazwa: <?php echo htmlspecialchars($produkty[$_SESSION['ostatni_wybor']['id']]['nazwa'], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>Nazwa: <?php echo htmlspecialchars($produkty[$indeksOstatniegoProduktu]['nazwa'], ENT_QUOTES, 'UTF-8'); ?></p>
                 <p>Ilość: <?php echo htmlspecialchars($_SESSION['ostatni_wybor']['ilosc'], ENT_QUOTES, 'UTF-8'); ?></p>
+            </div>
+        <?php else: ?>
+            <div class="box">
+                <h4>Brak wybranego produktu</h4>
             </div>
         <?php endif; ?>
         <div class="box">
