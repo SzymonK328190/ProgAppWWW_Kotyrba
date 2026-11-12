@@ -10,18 +10,21 @@ Wymagania
 - XAMPP
 - przeglądarka
 
-Przenieść zawartość katalogu `lab3` do folderu `htdocs\lab3` w lokalizacji instalacji XAMPP'a
+Przenieść zawartość katalogu `lab4` do folderu `htdocs\lab4` w lokalizacji instalacji XAMPP'a
 
-W przeglądarce otworzyć `localhost/lab3`
+W przeglądarce otworzyć `localhost/lab4`
 
 ## Wyniki testów LAB4
 
-|Kroki|Wynik oczekiwany|Wynik rzeczywisty|
-|---|---|---|
-|Szybkie klikanie pierwszego przycisku|Po resecie i 10 kliknięciach ustawiony jest stan bazowy. Po zakończeniu klikania animacje nie odtwarzają zaległej kolejki|Wynik rzeczywisty zgadza się z wynikiem oczekiwanym|
-|Najechanie kursorem na drugi przycisk, klikniecie przycisku żeby ustawić na nim focus i zjechanie z niego kursorem|Przycisk powiększa się i maleje dopiero wtedy kiedy stracimy na nim focus i zjedziemy kursorem|Wynik rzeczywisty zgadza się z wynikiem oczekiwanym|
-|Klikanie trzeciego przycisku więcej niż 5 razy i kliknięcie przycisku reset|Przycisk powiększa się maksymalnie do 260px x 140px. Dalsze kliknięcia nie powiększają przycisku. Reset zeruje stan|Wynik rzeczywisty zgadza się z wynikiem oczekiwanym|
-|Użyto klawiatury do nawigowania po stronie używając przycisków TAB i ENTER| Tab dociera do przycisków; Enter i Spacja obsługują A, C i reset. Ograniczenie ruchu wyłącza przejścia, zachowując funkcje.| Wynik rzeczywisty zgadza się z wynikiem oczekiwanym|
+| Próba | Kroki | Wynik oczekiwany | Wynik rzeczywisty |
+|---|---|---|---|
+| Filtr GET | Zmiana parametru w URL na `?kategoria=ksiazki`, nieznaną wartość oraz `?kategoria[]=ksiazki`. | `?kategoria=ksiazki` pokazuje tylko książki. Nieznana kategoria lub `?kategoria[]=ksiazki` pokazuje pełną listę i komunikat. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Poprawny POST i odświeżenie | Wybór dostępnego produktu, podgląd w Network, odświeżenie (F5) i zmiana filtra. | W Network widać POST 303, potem GET 200. Po odświeżeniu i zmianie filtra zapisany wybór pozostaje widoczny. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Błędne wartości POST | Edycja formularza w Inspektorze na wartości: `0`, `6`, `2.5`, `2abc`, brak pola, tablicę `[]` i nieznane ID. | Każda próba daje HTTP 400 i pozostawia poprzedni wybór. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Stan magazynowy | Próba wyboru 2 sztuk dla produktu ze stanem równym 1. | Serwer odrzuca wybór, mimo że 2 mieści się w przedziale 1–5. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Odrębna sesja i tekst HTML | Otwarcie strony w oknie prywatnym oraz tymczasowa zmiana nazwy produktu na `<b>Test</b>`. | W nowej sesji nie ma wyboru. Nazwa testowa `<b>Test</b>` wyświetla się jako tekst; przywrócono zwykłą nazwę. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Strona po zmianie ścieżek | Otwarcie strony głównej i podstron, test stylów, animacji oraz `status.php`. | Działają style, obrazy, linki i funkcje z lab3, w tym animacje i żądanie do `status.php`. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+
 
 ## Źródła grafik
 
