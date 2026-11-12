@@ -1,6 +1,6 @@
 :root , [data-theme="light"] {
     --background-colour: #ffffff;
-    --border-colour: #505050;
+    --border-colour: #bdbdbd;
     --fill-colour: #DDDDDD;
     --text-colour: #000000;
     --reverse-text-colour: #FFFFFF;
@@ -8,6 +8,7 @@
     --button-colour: #5353ff;
     --error-colour: #ff0000;
     --danger-colour: #ad0000;
+    --tab-select: #4e4e4e;
 }
 
 [data-theme="dark"] {
@@ -20,6 +21,7 @@
     --button-colour: #c8c8ff;
     --error-colour: #ff0000;
     --danger-colour: #ff5b5b;
+    --tab-select: #FFFFFF;
 }
 
 * {
@@ -75,6 +77,14 @@ img {
     padding: 12px;
 }
 
+.box {
+    background-color: var(--fill-colour);
+    border: 2px solid var(--border-colour);
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
 .catalog-product img {
     width: 100%;
     height: 250px;
@@ -118,7 +128,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-    outline: 3px solid var(--border-colour);
+    outline: 3px solid var(--tab-select);
 }
 
 #theme-button-style {
@@ -126,6 +136,10 @@ textarea:focus-visible {
 }
 
 #form-message-error {
+    color: var(--danger-colour);
+}
+
+.error-message {
     color: var(--danger-colour);
 }
 
