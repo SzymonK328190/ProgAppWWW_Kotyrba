@@ -10,37 +10,22 @@ Wymagania
 - XAMPP
 - przeglądarka
 
-Przenieść zawartość katalogu `lab3` do folderu `htdocs\lab3` w lokalizacji instalacji XAMPP'a
+Przenieść zawartość katalogu `lab5` do folderu `htdocs\lab4` w lokalizacji instalacji XAMPP'a
 
-W przeglądarce otworzyć `localhost/lab3`
+W przeglądarce otworzyć `localhost/lab5`
 
-## Wyniki testów LAB3
+## Wyniki testów LAB5
 
-|Kroki|Wynik oczekiwany|Wynik rzeczywisty|
-|---|---|---|
-|Szybkie klikanie pierwszego przycisku|Po resecie i 10 kliknięciach ustawiony jest stan bazowy. Po zakończeniu klikania animacje nie odtwarzają zaległej kolejki|Wynik rzeczywisty zgadza się z wynikiem oczekiwanym|
-|Najechanie kursorem na drugi przycisk, klikniecie przycisku żeby ustawić na nim focus i zjechanie z niego kursorem|Przycisk powiększa się i maleje dopiero wtedy kiedy stracimy na nim focus i zjedziemy kursorem|Wynik rzeczywisty zgadza się z wynikiem oczekiwanym|
-|Klikanie trzeciego przycisku więcej niż 5 razy i kliknięcie przycisku reset|Przycisk powiększa się maksymalnie do 260px x 140px. Dalsze kliknięcia nie powiększają przycisku. Reset zeruje stan|Wynik rzeczywisty zgadza się z wynikiem oczekiwanym|
-|Użyto klawiatury do nawigowania po stronie używając przycisków TAB i ENTER| Tab dociera do przycisków; Enter i Spacja obsługują A, C i reset. Ograniczenie ruchu wyłącza przejścia, zachowując funkcje.| Wynik rzeczywisty zgadza się z wynikiem oczekiwanym|
+| Próba | Kroki | Wynik oczekiwany | Wynik rzeczywisty |
+|---|---|---|---|
+| Adres domyślny i menu | Otwarcie `index.php`, `index.php?idp=` oraz kliknięcie kolejnych linków w menu. | `index.php` i `index.php?idp=` pokazują stronę główną. Odnośniki otwierają właściwe treści ze wspólnym szablonem i poprawnym tytułem. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Nieznany lub tablicowy klucz | Otwarcie `?idp=nieznana` oraz `?idp[]=filmy`, sprawdzenie kodu w Network. | `?idp=nieznana` i `?idp[]=filmy` dają HTTP 404 i odnośnik powrotny, bez ostrzeżeń PHP. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Próba podania ścieżki | Otwarcie adresu `?idp=..%2Fstatus.php` i sprawdzenie odpowiedzi w Network. | `?idp=..%2Fstatus.php` daje HTTP 404. Zawartość `status.php` nie zostaje dołączona. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Brak pliku widoku | Tymczasowa zmiana nazwy `html/filmy.html`, otwarcie `?idp=filmy`, następnie przywrócenie nazwy pliku. | Adres `?idp=filmy` zwraca HTTP 500 bez ujawnienia ścieżki systemowej. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Strona główna i AJAX | Otwarcie strony głównej, test stylów, grafik, animacji i podgląd żądania do `status.php` w Network. | Na stronie głównej działają style, grafiki i animacje. W panelu Sieć widać udane żądanie do `status.php`, a na stronie jego wynik. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Katalog i sesja po migracji | Wejście do katalogu z menu, filtr GET, zapis POST, przejście na Główną i Filmy, powrót do katalogu. | Zapis wyboru daje POST 303, potem GET 200. Po przejściu przez inne podstrony zapisany wybór nadal jest widoczny. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Filmy i układ mobilny | Uruchomienie 3 filmów, test linków i sprawdzenie widoku przy szerokości 360 px oraz nawigacji Tab. | Trzy filmy można uruchomić, odnośniki działają, a przy szerokości 360 px strona nie przewija się w poziomie. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
 
-### Odpowiedź po kliknięciu przycisku "Sprawdź serwer"
-`HTTP/1.1 200 OK
-Date: Thu, 05 Nov 2026 09:54:39 GMT
-Server: Apache/2.4.65 (Win64) OpenSSL/3.5.1 PHP/8.3.36
-X-Powered-By: PHP/8.3.36
-Content-Length: 11
-Keep-Alive: timeout=5, max=100
-Connection: Keep-Alive
-Content-Type: text/plain; charset=UTF-8`
-
-### Odpowiedź po zmianie nazwy pliku php
-`HTTP/1.1 404 Not Found
-Date: Thu, 05 Nov 2026 09:55:39 GMT
-Server: Apache/2.4.65 (Win64) OpenSSL/3.5.1 PHP/8.3.36
-Content-Length: 295
-Keep-Alive: timeout=5, max=98
-Connection: Keep-Alive
-Content-Type: text/html; charset=iso-8859-1`
 
 ## Źródła grafik
 
