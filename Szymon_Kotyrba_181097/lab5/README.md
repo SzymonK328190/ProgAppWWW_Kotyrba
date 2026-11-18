@@ -10,20 +10,21 @@ Wymagania
 - XAMPP
 - przeglądarka
 
-Przenieść zawartość katalogu `lab4` do folderu `htdocs\lab4` w lokalizacji instalacji XAMPP'a
+Przenieść zawartość katalogu `lab5` do folderu `htdocs\lab4` w lokalizacji instalacji XAMPP'a
 
-W przeglądarce otworzyć `localhost/lab4`
+W przeglądarce otworzyć `localhost/lab5`
 
-## Wyniki testów LAB4
+## Wyniki testów LAB5
 
 | Próba | Kroki | Wynik oczekiwany | Wynik rzeczywisty |
 |---|---|---|---|
-| Filtr GET | Zmiana parametru w URL na `?kategoria=ksiazki`, nieznaną wartość oraz `?kategoria[]=ksiazki`. | `?kategoria=ksiazki` pokazuje tylko książki. Nieznana kategoria lub `?kategoria[]=ksiazki` pokazuje pełną listę i komunikat. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
-| Poprawny POST i odświeżenie | Wybór dostępnego produktu, podgląd w Network, odświeżenie (F5) i zmiana filtra. | W Network widać POST 303, potem GET 200. Po odświeżeniu i zmianie filtra zapisany wybór pozostaje widoczny. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
-| Błędne wartości POST | Edycja formularza w Inspektorze na wartości: `0`, `6`, `2.5`, `2abc`, brak pola, tablicę `[]` i nieznane ID. | Każda próba daje HTTP 400 i pozostawia poprzedni wybór. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
-| Stan magazynowy | Próba wyboru 2 sztuk dla produktu ze stanem równym 1. | Serwer odrzuca wybór, mimo że 2 mieści się w przedziale 1–5. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
-| Odrębna sesja i tekst HTML | Otwarcie strony w oknie prywatnym oraz tymczasowa zmiana nazwy produktu na `<b>Test</b>`. | W nowej sesji nie ma wyboru. Nazwa testowa `<b>Test</b>` wyświetla się jako tekst; przywrócono zwykłą nazwę. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
-| Strona po zmianie ścieżek | Otwarcie strony głównej i podstron, test stylów, animacji oraz `status.php`. | Działają style, obrazy, linki i funkcje z lab3, w tym animacje i żądanie do `status.php`. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Adres domyślny i menu | Otwarcie `index.php`, `index.php?idp=` oraz kliknięcie kolejnych linków w menu. | `index.php` i `index.php?idp=` pokazują stronę główną. Odnośniki otwierają właściwe treści ze wspólnym szablonem i poprawnym tytułem. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Nieznany lub tablicowy klucz | Otwarcie `?idp=nieznana` oraz `?idp[]=filmy`, sprawdzenie kodu w Network. | `?idp=nieznana` i `?idp[]=filmy` dają HTTP 404 i odnośnik powrotny, bez ostrzeżeń PHP. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Próba podania ścieżki | Otwarcie adresu `?idp=..%2Fstatus.php` i sprawdzenie odpowiedzi w Network. | `?idp=..%2Fstatus.php` daje HTTP 404. Zawartość `status.php` nie zostaje dołączona. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Brak pliku widoku | Tymczasowa zmiana nazwy `html/filmy.html`, otwarcie `?idp=filmy`, następnie przywrócenie nazwy pliku. | Adres `?idp=filmy` zwraca HTTP 500 bez ujawnienia ścieżki systemowej. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Strona główna i AJAX | Otwarcie strony głównej, test stylów, grafik, animacji i podgląd żądania do `status.php` w Network. | Na stronie głównej działają style, grafiki i animacje. W panelu Sieć widać udane żądanie do `status.php`, a na stronie jego wynik. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Katalog i sesja po migracji | Wejście do katalogu z menu, filtr GET, zapis POST, przejście na Główną i Filmy, powrót do katalogu. | Zapis wyboru daje POST 303, potem GET 200. Po przejściu przez inne podstrony zapisany wybór nadal jest widoczny. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
+| Filmy i układ mobilny | Uruchomienie 3 filmów, test linków i sprawdzenie widoku przy szerokości 360 px oraz nawigacji Tab. | Trzy filmy można uruchomić, odnośniki działają, a przy szerokości 360 px strona nie przewija się w poziomie. | Wynik rzeczywisty zgadza się z wynikiem oczekiwanym. |
 
 
 ## Źródła grafik
