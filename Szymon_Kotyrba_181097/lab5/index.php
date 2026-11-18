@@ -71,7 +71,7 @@
             <?php
         } else {
             ?>
-                <h1 class=error-message>Błąd</h1>
+                <h1 class="error-message">Błąd</h1>
             <?php
         }
     ?>
@@ -84,7 +84,7 @@
                         <?php if($klucz === $wybraneIdp): ?>
                             aria-current="page"
                         <?php endif; ?>
-                        ><?php echo $dane['tytul']; ?></a></li>
+                        ><?php echo htmlspecialchars($dane['tytul'], ENT_QUOTES, 'UTF-8'); ?></a></li>
                     <?php
                 }
             ?>
