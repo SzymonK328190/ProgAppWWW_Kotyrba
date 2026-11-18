@@ -20,27 +20,24 @@
     ];
 
     $komunikatBledu = '';
-    if(isset($_GET['idp'])) {
-        if(is_string($_GET['idp']) && isset($podstrony['idp'])) {
-            $wybraneIdp = $_GET['idp'];
-        }
-        elseif ($_GET['idp'] == '') {
-            $wybraneIdp = 'glowna';
-        }
-        else {
-            http_response_code(404);
-            $komunikatBledu = "404 - Dana strona nie istnieje!";
-        }
-    } else {
+    $wybraneIdp = '';
+    if (!isset($_GET['idp']) || $_GET['idp'] === '') {
         $wybraneIdp = 'glowna';
-        if(!is_file($sciezkaPliku) || !is_readable($sciezkaPliku)) {
-            http_response_code(500);
-        }    
+    } elseif (!is_string($_GET['idp']) || !isset($podstrony[$_GET['idp']])) {
+        http_response_code(404);
+        $komunikatBledu = "404 - Dana podstrona nie istnieje!";
+    } else {
+        $wybraneIdp = $_GET['idp'];
     }
-    $sciezkaPliku = __DIR__ . '/' . $podstrony[$wybraneIdp]['plik'];
+    if ($komunikatBledu === '') {
+        $sciezkaPliku = __DIR__ . '/' . $podstrony[$wybraneIdp]['plik'];
 
-
-
+        if (!is_file($sciezkaPliku) || !is_readable($sciezkaPliku)) {
+            http_response_code(500);
+            $komunikatBledu = '500 - Wewnętrzny błąd serwera';
+        }
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -52,18 +49,46 @@
     <script src="js/main.js" defer></script>
     <script src="vendor/jquery-4.0.0.min.js" defer></script>
     <script src="js/lab3.js" defer></script>
-    <title>Sklep z artykułami artystycznymi - Strona główna</title>
+    <title>Sklep z artykułami artystycznymi - 
+        <?php
+        if($komunikatBledu === '') {
+            ?>
+                <?php echo htmlspecialchars($podstrony[$wybraneIdp]['tytul'], ENT_QUOTES, 'UTF-8')?>
+            <?php
+        } else {
+            ?>
+                Błąd
+            <?php
+        } ?>
+    </title>
 </head>
 <body>
 <header>
-    <h1>Strona główna</h1>
+    <?php 
+        if($komunikatBledu === '') {
+            ?>
+                <h1><?php echo htmlspecialchars($podstrony[$wybraneIdp]['tytul'], ENT_QUOTES, 'UTF-8')?></h1>
+            <?php
+        } else {
+            ?>
+                <h1 class=error-message>Błąd</h1>
+            <?php
+        }
+    ?>
     <nav>
         <ul>
-            <li><a href="index.html" aria-current="page">Główna</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-            <li><a href="produkt.html">Produkt</a></li>
-            <li><a href="lab4.php">Katalog PHP</a></li>
-            <li id="theme-button-style"><button id="theme-button" aria-pressed="true">Tryb ciemny</button></li>
+            <?php 
+                foreach($podstrony as $klucz => $dane) {
+                    ?>
+                        <li><a href="index.php?idp=<?php echo $klucz; ?>"
+                        <?php if($klucz === $wybraneIdp): ?>
+                            aria-current="page"
+                        <?php endif; ?>
+                        ><?php echo $dane['tytul']; ?></a></li>
+                    <?php
+                }
+            ?>
+            <li><a href='lab4.php'>Katalog PHP</a></li>
         </ul>
     </nav>
     <div id="time-date">
@@ -75,9 +100,13 @@
     </ul>
 </header>
 <main>
-<?php if($komunikatBledu != ''): ?>
-    <p class="error-message"><?php echo $komunikatBledu?></p>
-<?php endif ?>
+<?php if($komunikatBledu !== ''){ ?>
+    <h3 class="error-message"><?php echo $komunikatBledu?></h3>
+    <h5><a href='index.php?idp=glowna'>Powrót do strony głównej</a></h5>
+<?php } else {
+    include $sciezkaPliku;
+}
+?>
 </main>
 <footer><?php echo $sklep_demo?></footer>
 </body>
